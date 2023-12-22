@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Bu dersi silmek istediğinizden emin misiniz?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-lg">Sil</button>
+        <button class="btn btn-secondary">İptal Et</button>
+    </form>
+{% endblock content %}
