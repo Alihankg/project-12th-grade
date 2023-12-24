@@ -3,6 +3,7 @@ beautifulsoup4==4.12.2
 dj-database-url==2.1.0
 Django==4.2.8
 django-bootstrap-v5==1.0.11
+fontawesomefree==6.5.1
 psycopg2-binary==2.9.9
 python-decouple==3.8
 python-dotenv==1.0.0
