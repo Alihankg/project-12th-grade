@@ -1,8 +1,50 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1>Ders Güncelle</h1>
-    <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <button class="btn btn-success">Güncelle</button>
-    </form>
-{% endblock content %}
+<div
+	class="modal fade"
+	id="updateModal"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="staticBackdropLabel">Ders Güncelle</h1>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<form method="post" action="">
+				{% csrf_token %}
+				<div class="modal-body">{{ form.as_p }}</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal">
+						İptal
+					</button>
+					<button type="submit" class="btn btn-primary" name="subject_update">
+						Güncelle
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	const updateModal = document.getElementById('updateModal')
+	if (updateModal) {
+		updateModal.addEventListener('show.bs.modal', event => {
+			const button = event.relatedTarget
+			const subjectName = button.getAttribute('data-bs-subject')
+			const nameField = updateModal.querySelector(".modal-body input[name='name']")
+			const form = updateModal.querySelector("form")
+			nameField.value = subjectName
+			action = button.getAttribute('data-bs-action')
+			form.action = action
+		})
+	}
+</script>

@@ -1,6 +1,6 @@
 <div
 	class="modal fade"
-	id="createModal"
+	id="{% block id %}{% endblock id %}"
 	data-bs-backdrop="static"
 	data-bs-keyboard="false"
 	tabindex="-1"
@@ -9,7 +9,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="staticBackdropLabel">Ders Ekle</h1>
+				<h1 class="modal-title fs-5">{% block title %}{% endblock title %}</h1>
 				<button
 					type="button"
 					class="btn-close"
@@ -27,7 +27,7 @@
 						İptal
 					</button>
 					<button type="submit" class="btn btn-success" name="subject_create">
-						Ekle
+						{% block submit %}{% endblock submit %}
 					</button>
 				</div>
 			</form>

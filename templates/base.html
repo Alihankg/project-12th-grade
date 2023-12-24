@@ -6,19 +6,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-		<script defer src="{% static 'javascript/bootstrap.bundle.min.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/bootstrap-icons.min.css' %}" />
+		<script src="{% static 'javascript/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'fontawesomefree/js/fontawesome.js' %}"></script>
+		<script src="{% static 'fontawesomefree/js/solid.js' %}"></script>
 	</head>
 	<body>
 		{% include "include/navbar.html" %}
-		<div class = "container my-4">
-			{% if messages %}
-				{% for message in messages %}
-					<div {% if message.tags %}class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %}>
-						{{ message }}</div>
-				{% endfor %}
-			{% endif %}
-			{% block body %}
-			{% endblock body %}
+		<div class="container my-4">
+			{% if messages %} {% for message in messages %}
+			<div
+				{%
+				if
+				message.tags
+				%}
+				class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}"
+				{%
+				endif
+				%}>
+				{{ message }}
+			</div>
+			{% endfor %} {% endif %} {% block body %} {% endblock body %}
 		</div>
 		<div class="container mt-5">{% block content %}{% endblock content %}</div>
 	</body>
